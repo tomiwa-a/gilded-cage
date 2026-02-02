@@ -13,6 +13,27 @@ export const mockPlayer = {
   },
 };
 
+export const mockMarketHistory = [
+  { day: 'Mon', value: 980 },
+  { day: 'Tue', value: 1020 },
+  { day: 'Wed', value: 950 },
+  { day: 'Thu', value: 1100 },
+  { day: 'Fri', value: 1250 },
+  { day: 'Sat', value: 1180 },
+  { day: 'Sun', value: 1300 },
+];
+
+export const mockInvestments = [
+  { id: 1, name: 'CyberSec ETF', shares: 10, currentPrice: 125, trend: 'up' },
+  { id: 2, name: 'Slum Real Estate', shares: 2, currentPrice: 450, trend: 'down' },
+];
+
+export const mockPurchaseHistory = [
+  { id: 101, item: 'Energy Drink', amount: 3, cost: 45, date: '2 min ago' },
+  { id: 102, item: 'Lockpick Set', amount: 1, cost: 80, date: '1 hour ago' },
+  { id: 103, item: 'Sold Scrap Metal', amount: 5, cost: 25, date: 'Yesterday', type: 'sale' },
+];
+
 export const mockLocation = {
   name: "Sector 4 Slums",
   description: "A dense, ramshackle district teeming with activity. Neon signs flicker against weathered concrete, and the air is thick with the scent of street food and exhaust.",
