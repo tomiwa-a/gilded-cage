@@ -8,7 +8,7 @@ type Step = 1 | 2 | 3 | 4;
 interface CharacterDraft {
   name: string;
   archetype: string | null;
-  stats: { rhetoric: number; hustle: number; entropy: number };
+  stats: { influence: number; cunning: number; power: number };
   difficulty: string | null;
 }
 
@@ -18,29 +18,29 @@ export default function CharacterCreation() {
   const [character, setCharacter] = useState<CharacterDraft>({
     name: '',
     archetype: null,
-    stats: { rhetoric: 5, hustle: 5, entropy: 5 },
+    stats: { influence: 5, cunning: 5, power: 5 },
     difficulty: null,
   });
 
   const totalPoints = 5;
-  const usedPoints = (character.stats.rhetoric - 5) + (character.stats.hustle - 5) + (character.stats.entropy - 5);
+  const usedPoints = (character.stats.influence - 5) + (character.stats.cunning - 5) + (character.stats.power - 5);
   const remainingPoints = totalPoints - usedPoints;
 
   const getArchetypeBonus = () => {
     const arch = archetypes.find(a => a.id === character.archetype);
-    return arch?.bonus || { rhetoric: 0, hustle: 0, entropy: 0 };
+    return arch?.bonus || { influence: 0, cunning: 0, power: 0 };
   };
 
   const getFinalStats = () => {
     const bonus = getArchetypeBonus();
     return {
-      rhetoric: character.stats.rhetoric + bonus.rhetoric,
-      hustle: character.stats.hustle + bonus.hustle,
-      entropy: character.stats.entropy + bonus.entropy,
+      influence: character.stats.influence + bonus.influence,
+      cunning: character.stats.cunning + bonus.cunning,
+      power: character.stats.power + bonus.power,
     };
   };
 
-  const adjustStat = (stat: 'rhetoric' | 'hustle' | 'entropy', delta: number) => {
+  const adjustStat = (stat: 'influence' | 'cunning' | 'power', delta: number) => {
     const newValue = character.stats[stat] + delta;
     if (newValue < 1 || newValue > 10) return;
     if (delta > 0 && remainingPoints <= 0) return;
@@ -78,12 +78,12 @@ export default function CharacterCreation() {
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-neutral-50">
       <nav className="bg-white border-b border-neutral-200 shrink-0">
-        <div className="px-6 py-3 flex items-center justify-between">
+        <div className="px-4 sm:px-6 py-3 flex items-center justify-between">
           <button onClick={() => navigate('/')} className="flex items-center gap-2 hover:opacity-70 transition-opacity">
             <div className="w-6 h-6 text-neutral-900">
               <LogoIcon />
             </div>
-            <span className="font-semibold text-neutral-900">The Gilded Cage</span>
+            <span className="font-semibold text-neutral-900 hidden sm:inline">The Gilded Cage</span>
           </button>
           <div className="flex items-center gap-2">
             {[1, 2, 3, 4].map((s) => (
@@ -98,12 +98,12 @@ export default function CharacterCreation() {
         </div>
       </nav>
 
-      <div className="flex-1 flex items-center justify-center p-8 overflow-y-auto">
-        <div className="w-full max-w-2xl animate-fade-in" key={step}>
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 overflow-y-auto">
+        <div className="w-full max-w-4xl animate-fade-in" key={step}>
           {step === 1 && (
             <div className="text-center animate-slide-up">
               <div className="mb-2 text-neutral-500 text-sm uppercase tracking-wider">Step 1 of 4</div>
-              <h1 className="text-3xl font-bold text-neutral-900 mb-2">Name Your Character</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-2">Name Your Character</h1>
               <p className="text-neutral-600 mb-8">Choose a name that will echo through the streets of The Cage.</p>
               
               <input
@@ -121,26 +121,29 @@ export default function CharacterCreation() {
             <div className="animate-slide-up">
               <div className="text-center mb-8">
                 <div className="mb-2 text-neutral-500 text-sm uppercase tracking-wider">Step 2 of 4</div>
-                <h1 className="text-3xl font-bold text-neutral-900 mb-2">Choose Your Path</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-2">Choose Your Path</h1>
                 <p className="text-neutral-600">Your archetype shapes how you interact with the world.</p>
               </div>
               
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                 {archetypes.map((arch) => (
                   <button
                     key={arch.id}
                     onClick={() => setCharacter({ ...character, archetype: arch.id })}
-                    className={`card-game p-6 text-left ${
+                    className={`card-game p-6 sm:p-8 text-left ${
                       character.archetype === arch.id ? 'selected animate-pulse-glow' : ''
                     }`}
                   >
-                    <h3 className="text-lg font-bold text-neutral-900 mb-2">{arch.name}</h3>
+                    <h3 className="text-xl font-bold text-neutral-900 mb-1">{arch.name}</h3>
+                    <p className="text-sm text-neutral-500 italic mb-4">{arch.tagline}</p>
                     <p className="text-sm text-neutral-600 mb-4">{arch.description}</p>
-                    <div className="text-xs text-neutral-500 mb-2">{arch.playstyle}</div>
-                    <div className="flex gap-2 text-xs">
-                      <span className="bg-neutral-100 px-2 py-1 rounded">+{arch.bonus.rhetoric} RHE</span>
-                      <span className="bg-neutral-100 px-2 py-1 rounded">+{arch.bonus.hustle} HUS</span>
-                      <span className="bg-neutral-100 px-2 py-1 rounded">+{arch.bonus.entropy} ENT</span>
+                    <div className="text-xs text-neutral-500 mb-4">
+                      <span className="font-medium">Playstyle:</span> {arch.playstyle}
+                    </div>
+                    <div className="flex flex-wrap gap-2 text-xs">
+                      <span className="bg-neutral-100 px-3 py-1.5 rounded-full font-medium">+{arch.bonus.influence} INF</span>
+                      <span className="bg-neutral-100 px-3 py-1.5 rounded-full font-medium">+{arch.bonus.cunning} CUN</span>
+                      <span className="bg-neutral-100 px-3 py-1.5 rounded-full font-medium">+{arch.bonus.power} PWR</span>
                     </div>
                   </button>
                 ))}
@@ -152,7 +155,7 @@ export default function CharacterCreation() {
             <div className="animate-slide-up">
               <div className="text-center mb-8">
                 <div className="mb-2 text-neutral-500 text-sm uppercase tracking-wider">Step 3 of 4</div>
-                <h1 className="text-3xl font-bold text-neutral-900 mb-2">Allocate Your Points</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-2">Allocate Your Points</h1>
                 <p className="text-neutral-600">
                   <span className={remainingPoints === 0 ? 'text-green-600 font-medium' : ''}>
                     {remainingPoints} points remaining
@@ -160,14 +163,21 @@ export default function CharacterCreation() {
                 </p>
               </div>
               
-              <div className="card-game p-6 max-w-md mx-auto">
-                {(['rhetoric', 'hustle', 'entropy'] as const).map((stat) => {
+              <div className="card-game p-6 sm:p-8 max-w-lg mx-auto">
+                {(['influence', 'cunning', 'power'] as const).map((stat) => {
                   const bonus = getArchetypeBonus()[stat];
+                  const labels = { influence: 'Influence', cunning: 'Cunning', power: 'Power' };
+                  const descriptions = {
+                    influence: 'Social capital, diplomacy, business',
+                    cunning: 'Street smarts, theft, gambling',
+                    power: 'Strength, intimidation, combat'
+                  };
                   return (
-                    <div key={stat} className="flex items-center justify-between py-3 border-b border-neutral-100 last:border-0">
+                    <div key={stat} className="flex items-center justify-between py-4 border-b border-neutral-100 last:border-0">
                       <div>
-                        <div className="font-medium text-neutral-900 capitalize">{stat}</div>
-                        <div className="text-xs text-neutral-500">
+                        <div className="font-semibold text-neutral-900">{labels[stat]}</div>
+                        <div className="text-xs text-neutral-500">{descriptions[stat]}</div>
+                        <div className="text-xs text-neutral-400 mt-1">
                           Base: {character.stats[stat]} {bonus > 0 && <span className="text-green-600">+{bonus}</span>}
                         </div>
                       </div>
@@ -175,17 +185,17 @@ export default function CharacterCreation() {
                         <button
                           onClick={() => adjustStat(stat, -1)}
                           disabled={character.stats[stat] <= 1}
-                          className="w-8 h-8 rounded-full border border-neutral-200 hover:border-neutral-900 disabled:opacity-30 disabled:hover:border-neutral-200 transition-colors"
+                          className="w-10 h-10 rounded-full border border-neutral-200 hover:border-neutral-900 hover:bg-neutral-50 disabled:opacity-30 disabled:hover:border-neutral-200 disabled:hover:bg-transparent transition-all text-lg"
                         >
                           −
                         </button>
-                        <span className="w-8 text-center font-bold text-lg">
+                        <span className="w-10 text-center font-bold text-xl">
                           {character.stats[stat] + bonus}
                         </span>
                         <button
                           onClick={() => adjustStat(stat, 1)}
                           disabled={character.stats[stat] >= 10 || remainingPoints <= 0}
-                          className="w-8 h-8 rounded-full border border-neutral-200 hover:border-neutral-900 disabled:opacity-30 disabled:hover:border-neutral-200 transition-colors"
+                          className="w-10 h-10 rounded-full border border-neutral-200 hover:border-neutral-900 hover:bg-neutral-50 disabled:opacity-30 disabled:hover:border-neutral-200 disabled:hover:bg-transparent transition-all text-lg"
                         >
                           +
                         </button>
@@ -201,33 +211,33 @@ export default function CharacterCreation() {
             <div className="animate-slide-up">
               <div className="text-center mb-8">
                 <div className="mb-2 text-neutral-500 text-sm uppercase tracking-wider">Step 4 of 4</div>
-                <h1 className="text-3xl font-bold text-neutral-900 mb-2">Choose Your Fate</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-2">Choose Your Fate</h1>
                 <p className="text-neutral-600">How ruthless will The Cage be?</p>
               </div>
               
-              <div className="space-y-4 mb-8">
+              <div className="grid grid-cols-1 gap-4 mb-8 max-w-2xl mx-auto">
                 {difficulties.map((diff) => (
                   <button
                     key={diff.id}
                     onClick={() => setCharacter({ ...character, difficulty: diff.id })}
-                    className={`card-game p-6 w-full text-left ${
+                    className={`card-game p-6 sm:p-8 w-full text-left ${
                       character.difficulty === diff.id ? 'selected animate-pulse-glow' : ''
                     }`}
                   >
-                    <h3 className="text-lg font-bold text-neutral-900 mb-1">{diff.name}</h3>
-                    <p className="text-sm text-neutral-600 mb-3">{diff.description}</p>
+                    <h3 className="text-xl font-bold text-neutral-900 mb-1">{diff.name}</h3>
+                    <p className="text-sm text-neutral-600 mb-4">{diff.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {diff.modifiers.map((mod) => (
-                        <span key={mod} className="text-xs bg-neutral-100 px-2 py-1 rounded">{mod}</span>
+                        <span key={mod} className="text-xs bg-neutral-100 px-3 py-1.5 rounded-full">{mod}</span>
                       ))}
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="card-game p-6 max-w-md mx-auto">
+              <div className="card-game p-6 sm:p-8 max-w-lg mx-auto">
                 <h4 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">Character Summary</h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-neutral-600">Name</span>
                     <span className="font-medium text-neutral-900">{character.name}</span>
@@ -236,17 +246,19 @@ export default function CharacterCreation() {
                     <span className="text-neutral-600">Archetype</span>
                     <span className="font-medium text-neutral-900 capitalize">{character.archetype}</span>
                   </div>
-                  <div className="flex justify-between pt-2 border-t border-neutral-100">
-                    <span className="text-neutral-600">Rhetoric</span>
-                    <span className="font-medium text-neutral-900">{getFinalStats().rhetoric}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-neutral-600">Hustle</span>
-                    <span className="font-medium text-neutral-900">{getFinalStats().hustle}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-neutral-600">Entropy</span>
-                    <span className="font-medium text-neutral-900">{getFinalStats().entropy}</span>
+                  <div className="border-t border-neutral-100 pt-3 mt-3 space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-neutral-600">Influence</span>
+                      <span className="font-medium text-neutral-900">{getFinalStats().influence}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-neutral-600">Cunning</span>
+                      <span className="font-medium text-neutral-900">{getFinalStats().cunning}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-neutral-600">Power</span>
+                      <span className="font-medium text-neutral-900">{getFinalStats().power}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -272,3 +284,4 @@ export default function CharacterCreation() {
     </div>
   );
 }
+

@@ -10,15 +10,15 @@ export default function GamePage() {
   return (
     <div className="h-screen flex flex-col overflow-hidden">
       <nav className="bg-white border-b border-neutral-200 shrink-0">
-        <div className="px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-6">
+        <div className="px-4 sm:px-6 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-4 sm:gap-6">
             <button onClick={() => navigate('/')} className="flex items-center gap-2 hover:opacity-70 transition-opacity">
               <div className="w-6 h-6 text-neutral-900">
                 <LogoIcon />
               </div>
-              <span className="font-semibold text-neutral-900">The Gilded Cage</span>
+              <span className="font-semibold text-neutral-900 hidden sm:inline">The Gilded Cage</span>
             </button>
-            <span className="text-neutral-300">|</span>
+            <span className="text-neutral-300 hidden sm:inline">|</span>
             <span className="text-neutral-600 text-sm">{mockLocation.name}</span>
           </div>
           <div className="flex items-center gap-6">
@@ -42,7 +42,7 @@ export default function GamePage() {
       </nav>
 
       <div className="flex flex-1 overflow-hidden">
-        <aside className="w-64 bg-white border-r border-neutral-200 p-4 overflow-y-auto">
+        <aside className="hidden md:block w-64 bg-white border-r border-neutral-200 p-4 overflow-y-auto">
           <div className="space-y-4">
             <div className="flex flex-col items-center pb-4 border-b border-neutral-200">
               <div className="w-16 h-16 bg-neutral-200 rounded-full flex items-center justify-center mb-2">
@@ -96,7 +96,7 @@ export default function GamePage() {
           </div>
         </aside>
 
-        <main className="flex-1 p-6 overflow-y-auto bg-neutral-50">
+        <main className="flex-1 p-4 sm:p-6 overflow-y-auto bg-neutral-50">
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="bg-white border border-neutral-200 rounded-lg p-6">
               <h2 className="text-2xl font-bold text-neutral-900 mb-2">{mockLocation.name}</h2>
@@ -111,7 +111,7 @@ export default function GamePage() {
 
             <div className="bg-white border border-neutral-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-neutral-900 mb-4">Available Actions</h3>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {mockActions.map((action) => (
                   <button
                     key={action.id}
@@ -129,7 +129,7 @@ export default function GamePage() {
 
             <div className="bg-white border border-neutral-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-neutral-900 mb-4">Travel</h3>
-              <div className="flex gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {mockLocation.connectedLocations.map((loc) => (
                   <button
                     key={loc.id}
@@ -144,7 +144,7 @@ export default function GamePage() {
           </div>
         </main>
 
-        <aside className="w-64 bg-white border-l border-neutral-200 p-4 overflow-y-auto">
+        <aside className="hidden lg:block w-64 bg-white border-l border-neutral-200 p-4 overflow-y-auto">
           <div className="space-y-4">
             <div>
               <h4 className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-2">Inventory</h4>
