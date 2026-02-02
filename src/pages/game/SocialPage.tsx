@@ -1,91 +1,78 @@
 import { useState } from 'react';
-
-const friends = [
-  { id: 1, name: 'NightOwl', level: 5, location: 'Slums', online: true },
-  { id: 2, name: 'CryptoKing', level: 23, location: 'Markets', online: true },
-  { id: 3, name: 'DarkShadow', level: 15, location: 'Offline', online: false },
-  { id: 4, name: 'Viper', level: 9, location: 'Offline', online: false },
-];
-
-const crewMembers = [
-  { name: 'BossMan', role: 'Leader', level: 45 },
-  { name: 'VeteranX', role: 'Officer', level: 32 },
-  { name: 'OldGuard', role: 'Officer', level: 28 },
-  { name: 'You', role: 'Member', level: 8 },
-  { name: 'NightOwl', role: 'Member', level: 5 },
-];
-
-type Tab = 'friends' | 'crew' | 'messages';
+import UserIcon from '../../components/icons/UserIcon';
+import CrownIcon from '../../components/icons/CrownIcon';
+import StarIcon from '../../components/icons/StarIcon';
+import ChatIcon from '../../components/icons/ChatIcon';
 
 export default function SocialPage() {
-  const [activeTab, setActiveTab] = useState<Tab>('friends');
+  const [activeTab, setActiveTab] = useState('friends');
+
+  const friends = [
+    { id: 1, name: 'NeonRat', status: 'online', location: 'The Markets' },
+    { id: 2, name: 'CyberSamurai', status: 'offline', location: 'Residential Zone' },
+  ];
+
+  const crew = [
+    { id: 1, name: 'Viper', role: 'Leader', status: 'online' },
+    { id: 2, name: 'Alex', role: 'Member', status: 'online' }, // You
+    { id: 3, name: 'Tank', role: 'Member', status: 'offline' },
+  ];
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="flex gap-2 mb-6">
-        {(['friends', 'crew', 'messages'] as Tab[]).map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 rounded-lg font-medium capitalize transition-colors ${
-              activeTab === tab ? 'bg-neutral-900 text-white' : 'bg-white border border-neutral-200 text-neutral-700 hover:bg-neutral-50'
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
+      <h1 className="text-2xl font-bold text-neutral-900 mb-6">Social</h1>
+
+      <div className="flex gap-4 border-b border-neutral-200 mb-6">
+        <button
+          onClick={() => setActiveTab('friends')}
+          className={`pb-2 px-1 text-sm font-medium ${
+            activeTab === 'friends' ? 'text-neutral-900 border-b-2 border-neutral-900' : 'text-neutral-500 hover:text-neutral-700'
+          }`}
+        >
+          Friends
+        </button>
+        <button
+          onClick={() => setActiveTab('crew')}
+          className={`pb-2 px-1 text-sm font-medium ${
+            activeTab === 'crew' ? 'text-neutral-900 border-b-2 border-neutral-900' : 'text-neutral-500 hover:text-neutral-700'
+          }`}
+        >
+          Crew
+        </button>
+        <button
+          onClick={() => setActiveTab('messages')}
+          className={`pb-2 px-1 text-sm font-medium ${
+            activeTab === 'messages' ? 'text-neutral-900 border-b-2 border-neutral-900' : 'text-neutral-500 hover:text-neutral-700'
+          }`}
+        >
+          Messages
+        </button>
       </div>
 
       {activeTab === 'friends' && (
         <div className="space-y-4">
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold text-neutral-900">Friends</h2>
-            <button className="text-sm text-neutral-600 hover:text-neutral-900">+ Add Friend</button>
-          </div>
-          <div className="bg-white border border-neutral-200 rounded-lg divide-y divide-neutral-200">
-            {friends.map((friend) => (
-              <div key={friend.id} className="p-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className={`w-2 h-2 rounded-full ${friend.online ? 'bg-green-500' : 'bg-neutral-300'}`}></span>
-                  <div>
-                    <div className="font-medium text-neutral-900">{friend.name}</div>
-                    <div className="text-sm text-neutral-500">Lv {friend.level} • {friend.location}</div>
-                  </div>
+          {friends.map((friend) => (
+            <div key={friend.id} className="flex items-center justify-between bg-white p-4 rounded-lg border border-neutral-200">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-neutral-200 rounded-full flex items-center justify-center text-neutral-500">
+                  <div className="w-6 h-6"><UserIcon /></div>
                 </div>
-                <div className="flex gap-2">
-                  <button className="px-3 py-1 text-sm border border-neutral-200 rounded-lg hover:bg-neutral-50">Message</button>
-                  <button className="px-3 py-1 text-sm border border-neutral-200 rounded-lg hover:bg-neutral-50">Profile</button>
+                <div>
+                  <div className="font-medium text-neutral-900">{friend.name}</div>
+                  <div className="text-xs text-neutral-500">{friend.location}</div>
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full ${friend.status === 'online' ? 'bg-green-500' : 'bg-neutral-300'}`}></span>
+                <span className="text-sm text-neutral-500 capitalize">{friend.status}</span>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
       {activeTab === 'crew' && (
         <div className="space-y-4">
-          <div className="bg-white border border-neutral-200 rounded-lg p-6">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h2 className="text-xl font-bold text-neutral-900">THE SYNDICATE</h2>
-                <div className="text-sm text-neutral-500">Members: 12/25 • Territory: 3 zones • Rank: #15</div>
-              </div>
-              <button className="text-sm text-red-600 hover:underline">Leave Crew</button>
-            </div>
-          </div>
-
-          <div className="bg-white border border-neutral-200 rounded-lg p-6">
-            <h3 className="font-semibold text-neutral-900 mb-4">Members</h3>
-            <div className="space-y-3">
-              {crewMembers.map((member) => (
-                <div key={member.name} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    {member.role === 'Leader' && <span>👑</span>}
-                    {member.role === 'Officer' && <span>⭐</span>}
-                    <span className={`font-medium ${member.name === 'You' ? 'text-blue-600' : 'text-neutral-900'}`}>
-                      {member.name}
-                    </span>
-                  </div>
                   <span className="text-sm text-neutral-500">Lv {member.level}</span>
                 </div>
               ))}

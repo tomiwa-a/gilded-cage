@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import SwordIcon from '../../components/icons/SwordIcon';
+import ShieldIcon from '../../components/icons/ShieldIcon';
+import PotionIcon from '../../components/icons/PotionIcon';
+import RunIcon from '../../components/icons/RunIcon';
 
 export default function CombatPage() {
   const [inCombat] = useState(false);
@@ -7,7 +11,9 @@ export default function CombatPage() {
     return (
       <div className="max-w-2xl mx-auto">
         <div className="bg-white border border-neutral-200 rounded-lg p-6">
-          <h1 className="text-2xl font-bold text-neutral-900 text-center mb-6">⚔️ COMBAT ⚔️</h1>
+          <h1 className="text-2xl font-bold text-neutral-900 text-center mb-6 flex items-center justify-center gap-2">
+            <span className="w-6 h-6"><SwordIcon /></span> COMBAT <span className="w-6 h-6"><SwordIcon /></span>
+          </h1>
           
           <div className="grid grid-cols-2 gap-8 mb-8">
             <div className="text-center">
@@ -33,23 +39,23 @@ export default function CombatPage() {
           </div>
 
           <div className="grid grid-cols-4 gap-3 mb-6">
-            <button className="p-4 bg-red-50 border border-red-200 rounded-lg text-center hover:bg-red-100 transition-colors">
-              <div className="text-2xl mb-1">⚔️</div>
+            <button className="p-4 bg-red-50 border border-red-200 rounded-lg text-center hover:bg-red-100 transition-colors group">
+              <div className="w-8 h-8 mx-auto mb-1 text-red-700"><SwordIcon /></div>
               <div className="text-sm font-medium text-red-700">Attack</div>
               <div className="text-xs text-red-500">2.0s</div>
             </button>
-            <button className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-center hover:bg-blue-100 transition-colors">
-              <div className="text-2xl mb-1">🛡️</div>
+            <button className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-center hover:bg-blue-100 transition-colors group">
+              <div className="w-8 h-8 mx-auto mb-1 text-blue-700"><ShieldIcon /></div>
               <div className="text-sm font-medium text-blue-700">Defend</div>
               <div className="text-xs text-blue-500">3.0s</div>
             </button>
-            <button className="p-4 bg-green-50 border border-green-200 rounded-lg text-center hover:bg-green-100 transition-colors">
-              <div className="text-2xl mb-1">💊</div>
+            <button className="p-4 bg-green-50 border border-green-200 rounded-lg text-center hover:bg-green-100 transition-colors group">
+              <div className="w-8 h-8 mx-auto mb-1 text-green-700"><PotionIcon /></div>
               <div className="text-sm font-medium text-green-700">Item</div>
               <div className="text-xs text-green-500">1.5s</div>
             </button>
-            <button className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center hover:bg-yellow-100 transition-colors">
-              <div className="text-2xl mb-1">🏃</div>
+            <button className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center hover:bg-yellow-100 transition-colors group">
+              <div className="w-8 h-8 mx-auto mb-1 text-yellow-700"><RunIcon /></div>
               <div className="text-sm font-medium text-yellow-700">Flee</div>
               <div className="text-xs text-yellow-500">5.0s</div>
             </button>

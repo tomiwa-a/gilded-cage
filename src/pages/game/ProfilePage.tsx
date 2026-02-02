@@ -1,4 +1,8 @@
 import { mockPlayer } from '../../data/mocks';
+import UserIcon from '../../components/icons/UserIcon';
+import BoltIcon from '../../components/icons/BoltIcon';
+import CoinsIcon from '../../components/icons/CoinsIcon';
+import HeartIcon from '../../components/icons/HeartIcon';
 
 export default function ProfilePage() {
   const stats = {
@@ -20,8 +24,8 @@ export default function ProfilePage() {
   return (
     <div className="max-w-2xl mx-auto">
       <div className="bg-white border border-neutral-200 rounded-lg p-6 text-center mb-6">
-        <div className="w-20 h-20 bg-neutral-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-          <span className="text-3xl">👤</span>
+        <div className="w-20 h-20 bg-neutral-200 rounded-full mx-auto mb-4 flex items-center justify-center text-neutral-500">
+          <div className="w-10 h-10"><UserIcon /></div>
         </div>
         <h1 className="text-2xl font-bold text-neutral-900">{mockPlayer.name}</h1>
         <div className="text-neutral-600">Level 8</div>

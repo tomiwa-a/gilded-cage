@@ -1,3 +1,7 @@
+import BoltIcon from '../../components/icons/BoltIcon';
+import CoinsIcon from '../../components/icons/CoinsIcon';
+import AlertIcon from '../../components/icons/AlertIcon';
+
 const crimes = [
   { id: 1, name: 'Pickpocket', risk: 'low', reward: '$5-25', energy: 10, stat: 'cunning', description: 'Lift wallets from distracted targets.' },
   { id: 2, name: 'Burglary', risk: 'medium', reward: '$20-100 + items', energy: 20, stat: 'cunning', description: 'Break into an unoccupied building.' },
@@ -20,7 +24,9 @@ export default function CrimePage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-neutral-900">Criminal Activities</h1>
-          <p className="text-neutral-600">⚠️ High risk, high reward</p>
+          <p className="text-neutral-600 flex items-center gap-1">
+            <span className="w-4 h-4 text-orange-500"><AlertIcon /></span> High risk, high reward
+          </p>
         </div>
         <div className="text-right">
           <div className="text-sm text-neutral-500">Your Heat</div>
@@ -44,12 +50,12 @@ export default function CrimePage() {
             </div>
             <p className="text-neutral-600 mb-4">{crime.description}</p>
             <div className="flex flex-wrap gap-2 mb-4">
-              <span className="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full">
-                💰 {crime.reward}
-              </span>
-              <span className="px-2 py-1 bg-yellow-50 text-yellow-700 text-xs rounded-full">
-                ⚡ {crime.energy} energy
-              </span>
+              <div className="flex items-center gap-1 px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full">
+                <span className="w-3 h-3"><CoinsIcon /></span> {crime.reward}
+              </div>
+              <div className="flex items-center gap-1 px-2 py-1 bg-yellow-50 text-yellow-700 text-xs rounded-full">
+                <span className="w-3 h-3"><BoltIcon /></span> {crime.energy} energy
+              </div>
               <span className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full">
                 {crime.stat} check
               </span>

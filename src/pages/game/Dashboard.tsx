@@ -1,4 +1,10 @@
-import { mockLocation, mockActions } from "../../data/mocks";
+import { mockLocation, mockActions } from '../../data/mocks';
+import BriefcaseIcon from '../../components/icons/BriefcaseIcon';
+import SkullIcon from '../../components/icons/SkullIcon';
+import MapIcon from '../../components/icons/MapIcon';
+import ShopIcon from '../../components/icons/ShopIcon';
+import MoonIcon from '../../components/icons/MoonIcon';
+import SearchIcon from '../../components/icons/SearchIcon';
 
 export default function Dashboard() {
   return (
@@ -17,32 +23,32 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         <button className="bg-white border border-neutral-200 rounded-lg p-6 text-left hover:border-neutral-400 transition-colors">
-          <div className="text-2xl mb-2">💼</div>
+          <div className="w-8 h-8 mb-2 text-neutral-900"><BriefcaseIcon /></div>
           <h3 className="font-semibold text-neutral-900">Work</h3>
           <p className="text-sm text-neutral-600">Find jobs</p>
         </button>
         <button className="bg-white border border-neutral-200 rounded-lg p-6 text-left hover:border-neutral-400 transition-colors">
-          <div className="text-2xl mb-2">🔪</div>
+          <div className="w-8 h-8 mb-2 text-neutral-900"><SkullIcon /></div>
           <h3 className="font-semibold text-neutral-900">Crime</h3>
           <p className="text-sm text-neutral-600">Risk it all</p>
         </button>
         <button className="bg-white border border-neutral-200 rounded-lg p-6 text-left hover:border-neutral-400 transition-colors">
-          <div className="text-2xl mb-2">🗺️</div>
+          <div className="w-8 h-8 mb-2 text-neutral-900"><MapIcon /></div>
           <h3 className="font-semibold text-neutral-900">Travel</h3>
           <p className="text-sm text-neutral-600">Move zones</p>
         </button>
         <button className="bg-white border border-neutral-200 rounded-lg p-6 text-left hover:border-neutral-400 transition-colors">
-          <div className="text-2xl mb-2">🏪</div>
+          <div className="w-8 h-8 mb-2 text-neutral-900"><ShopIcon /></div>
           <h3 className="font-semibold text-neutral-900">Trade</h3>
           <p className="text-sm text-neutral-600">Buy & sell</p>
         </button>
         <button className="bg-white border border-neutral-200 rounded-lg p-6 text-left hover:border-neutral-400 transition-colors">
-          <div className="text-2xl mb-2">💤</div>
+          <div className="w-8 h-8 mb-2 text-neutral-900"><MoonIcon /></div>
           <h3 className="font-semibold text-neutral-900">Rest</h3>
           <p className="text-sm text-neutral-600">Recover HP</p>
         </button>
         <button className="bg-white border border-neutral-200 rounded-lg p-6 text-left hover:border-neutral-400 transition-colors">
-          <div className="text-2xl mb-2">🔍</div>
+          <div className="w-8 h-8 mb-2 text-neutral-900"><SearchIcon /></div>
           <h3 className="font-semibold text-neutral-900">Explore</h3>
           <p className="text-sm text-neutral-600">Look around</p>
         </button>

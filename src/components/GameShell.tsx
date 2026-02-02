@@ -1,6 +1,18 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import LogoIcon from '../components/icons/LogoIcon';
+import BoltIcon from '../components/icons/BoltIcon';
+import CoinsIcon from '../components/icons/CoinsIcon';
+import HomeIcon from '../components/icons/HomeIcon';
+import MapIcon from '../components/icons/MapIcon';
+import BriefcaseIcon from '../components/icons/BriefcaseIcon';
+import SkullIcon from '../components/icons/SkullIcon';
+import BackpackIcon from '../components/icons/BackpackIcon';
+import UserIcon from '../components/icons/UserIcon';
+import SwordIcon from '../components/icons/SwordIcon';
+import UsersIcon from '../components/icons/UsersIcon';
+import ShopIcon from '../components/icons/ShopIcon';
+import CogIcon from '../components/icons/CogIcon';
 import { mockPlayer, mockLocation, mockEventLog } from '../data/mocks';
 
 export default function GameShell() {
@@ -8,16 +20,16 @@ export default function GameShell() {
   const [eventLogOpen, setEventLogOpen] = useState(true);
 
   const navItems = [
-    { path: '/game', icon: '🏠', label: 'Dashboard' },
-    { path: '/game/map', icon: '🗺️', label: 'Map' },
-    { path: '/game/work', icon: '💼', label: 'Work' },
-    { path: '/game/crime', icon: '🔪', label: 'Crime' },
-    { path: '/game/inventory', icon: '🎒', label: 'Inventory' },
-    { path: '/game/profile', icon: '👤', label: 'Profile' },
-    { path: '/game/combat', icon: '⚔️', label: 'Combat' },
-    { path: '/game/social', icon: '👥', label: 'Social' },
-    { path: '/game/market', icon: '🏪', label: 'Market' },
-    { path: '/game/settings', icon: '⚙️', label: 'Settings' },
+    { path: '/game', icon: HomeIcon, label: 'Dashboard' },
+    { path: '/game/map', icon: MapIcon, label: 'Map' },
+    { path: '/game/work', icon: BriefcaseIcon, label: 'Work' },
+    { path: '/game/crime', icon: SkullIcon, label: 'Crime' },
+    { path: '/game/inventory', icon: BackpackIcon, label: 'Inventory' },
+    { path: '/game/profile', icon: UserIcon, label: 'Profile' },
+    { path: '/game/combat', icon: SwordIcon, label: 'Combat' },
+    { path: '/game/social', icon: UsersIcon, label: 'Social' },
+    { path: '/game/market', icon: ShopIcon, label: 'Market' },
+    { path: '/game/settings', icon: CogIcon, label: 'Settings' },
   ];
 
   return (
@@ -36,11 +48,11 @@ export default function GameShell() {
           </div>
           <div className="flex items-center gap-4 text-sm">
             <div className="flex items-center gap-2 bg-neutral-100 px-3 py-1.5 rounded-lg">
-              <span className="text-neutral-600">⚡</span>
+              <span className="text-neutral-600 w-4 h-4"><BoltIcon /></span>
               <span className="font-semibold text-neutral-900">{mockPlayer.ap}/{mockPlayer.maxAp}</span>
             </div>
             <div className="flex items-center gap-2 bg-neutral-100 px-3 py-1.5 rounded-lg">
-              <span className="text-neutral-600">$</span>
+              <span className="text-neutral-600 w-4 h-4"><CoinsIcon /></span>
               <span className="font-semibold text-neutral-900">{mockPlayer.money}</span>
             </div>
           </div>
@@ -48,22 +60,25 @@ export default function GameShell() {
       </nav>
 
       <div className="flex flex-1 overflow-hidden">
-        <aside className="hidden md:flex flex-col w-16 bg-white border-r border-neutral-200 py-4">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === '/game'}
-              className={({ isActive }) =>
-                `flex flex-col items-center justify-center py-3 px-2 text-xs transition-colors ${
-                  isActive ? 'bg-neutral-100 text-neutral-900' : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50'
-                }`
-              }
-              title={item.label}
-            >
-              <span className="text-lg">{item.icon}</span>
-            </NavLink>
-          ))}
+        <aside className="hidden md:flex flex-col w-64 bg-white border-r border-neutral-200 py-4">
+          <div className="px-4 mb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">Menu</div>
+          <div className="space-y-1 px-2">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === '/game'}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 py-2 px-3 rounded-lg text-sm transition-colors ${
+                    isActive ? 'bg-neutral-100 text-neutral-900 font-medium' : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50'
+                  }`
+                }
+              >
+                <span className="w-5 h-5"><item.icon /></span>
+                <span>{item.label}</span>
+              </NavLink>
+            ))}
+          </div>
         </aside>
 
         <main className="flex-1 overflow-y-auto p-4 sm:p-6">
@@ -130,7 +145,7 @@ export default function GameShell() {
               }`
             }
           >
-            <span className="text-lg">{item.icon}</span>
+            <span className="w-6 h-6 mb-1"><item.icon /></span>
           </NavLink>
         ))}
       </nav>

@@ -1,3 +1,6 @@
+import BoltIcon from '../../components/icons/BoltIcon';
+import ClockIcon from '../../components/icons/ClockIcon';
+
 const jobs = [
   { id: 1, name: 'Day Laborer', pay: 10, energy: 20, stat: 'power', statReq: 2, time: '2 hrs', description: 'Hard physical work. No questions asked.' },
   { id: 2, name: 'Runner', pay: 15, energy: 15, stat: 'cunning', statReq: 3, time: '1 hr', description: "Deliver packages. Don't ask what's inside." },
@@ -25,12 +28,12 @@ export default function WorkPage() {
                   Requires: {job.stat} {job.statReq}+
                 </span>
               )}
-              <span className="px-2 py-1 bg-yellow-50 text-yellow-700 text-xs rounded-full">
-                ⚡ {job.energy} energy
-              </span>
-              <span className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
-                ⏱️ {job.time}
-              </span>
+              <div className="flex items-center gap-1 px-2 py-1 bg-yellow-50 text-yellow-700 text-xs rounded-full">
+                <span className="w-3 h-3"><BoltIcon /></span> {job.energy} energy
+              </div>
+              <div className="flex items-center gap-1 px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
+                <span className="w-3 h-3"><ClockIcon /></span> {job.time}
+              </div>
             </div>
             <button className="w-full py-2 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-colors">
               Apply

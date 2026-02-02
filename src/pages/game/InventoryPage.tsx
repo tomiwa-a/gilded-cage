@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import SwordIcon from '../../components/icons/SwordIcon';
+import ShieldIcon from '../../components/icons/ShieldIcon';
+import WrenchIcon from '../../components/icons/WrenchIcon';
 
 const items = [
   { id: 1, name: 'Energy Drink', type: 'consumable', quantity: 3, description: 'Restores 25 energy instantly.', value: 10 },
@@ -30,7 +33,7 @@ export default function InventoryPage() {
             <h2 className="text-lg font-semibold text-neutral-900 mb-4">Equipment</h2>
             <div className="grid grid-cols-3 gap-4">
               <div className="border border-neutral-200 rounded-lg p-4 text-center">
-                <div className="text-2xl mb-2">⚔️</div>
+                <div className="w-8 h-8 mx-auto mb-2 text-neutral-900"><SwordIcon /></div>
                 <div className="text-xs text-neutral-500 uppercase mb-1">Weapon</div>
                 {equipment.weapon ? (
                   <>
@@ -42,7 +45,7 @@ export default function InventoryPage() {
                 )}
               </div>
               <div className="border border-neutral-200 rounded-lg p-4 text-center">
-                <div className="text-2xl mb-2">🛡️</div>
+                <div className="w-8 h-8 mx-auto mb-2 text-neutral-900"><ShieldIcon /></div>
                 <div className="text-xs text-neutral-500 uppercase mb-1">Armor</div>
                 {equipment.armor ? (
                   <div className="font-medium text-neutral-900 text-sm">{equipment.armor}</div>
@@ -51,7 +54,7 @@ export default function InventoryPage() {
                 )}
               </div>
               <div className="border border-neutral-200 rounded-lg p-4 text-center">
-                <div className="text-2xl mb-2">🔧</div>
+                <div className="w-8 h-8 mx-auto mb-2 text-neutral-900"><WrenchIcon /></div>
                 <div className="text-xs text-neutral-500 uppercase mb-1">Tool</div>
                 {equipment.tool ? (
                   <>

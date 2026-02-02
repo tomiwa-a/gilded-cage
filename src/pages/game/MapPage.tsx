@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PinIcon from '../../components/icons/PinIcon';
 
 const zones = [
   { id: 'corporate', name: 'Corporate District', type: 'safe', description: 'Clean streets, corporate towers, heavy security.', connections: ['residential', 'markets'] },
@@ -45,7 +46,9 @@ export default function MapPage() {
               </div>
               <p className="text-sm text-neutral-600">{zone.description}</p>
               {zone.current && (
-                <div className="mt-2 text-xs text-neutral-500">📍 You are here</div>
+                <div className="mt-2 text-xs text-neutral-500 flex items-center gap-1">
+                  <span className="w-3 h-3"><PinIcon /></span> You are here
+                </div>
               )}
             </button>
           ))}
