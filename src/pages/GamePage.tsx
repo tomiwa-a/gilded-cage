@@ -8,8 +8,8 @@ export default function GamePage() {
   const [eventLogOpen, setEventLogOpen] = useState(true);
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex flex-col">
-      <nav className="bg-white border-b border-neutral-200 sticky top-0 z-50">
+    <div className="h-screen flex flex-col overflow-hidden">
+      <nav className="bg-white border-b border-neutral-200 shrink-0">
         <div className="px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <button onClick={() => navigate('/')} className="flex items-center gap-2 hover:opacity-70 transition-opacity">
@@ -41,8 +41,8 @@ export default function GamePage() {
         </div>
       </nav>
 
-      <div className="flex flex-1">
-        <aside className="w-64 bg-white border-r border-neutral-200 p-4 sticky top-14 h-[calc(100vh-56px)] overflow-y-auto">
+      <div className="flex flex-1 overflow-hidden">
+        <aside className="w-64 bg-white border-r border-neutral-200 p-4 overflow-y-auto">
           <div className="space-y-4">
             <div className="flex flex-col items-center pb-4 border-b border-neutral-200">
               <div className="w-16 h-16 bg-neutral-200 rounded-full flex items-center justify-center mb-2">
@@ -96,7 +96,7 @@ export default function GamePage() {
           </div>
         </aside>
 
-        <main className="flex-1 p-6 overflow-y-auto">
+        <main className="flex-1 p-6 overflow-y-auto bg-neutral-50">
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="bg-white border border-neutral-200 rounded-lg p-6">
               <h2 className="text-2xl font-bold text-neutral-900 mb-2">{mockLocation.name}</h2>
@@ -144,7 +144,7 @@ export default function GamePage() {
           </div>
         </main>
 
-        <aside className="w-64 bg-white border-l border-neutral-200 p-4 sticky top-14 h-[calc(100vh-56px)] overflow-y-auto">
+        <aside className="w-64 bg-white border-l border-neutral-200 p-4 overflow-y-auto">
           <div className="space-y-4">
             <div>
               <h4 className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-2">Inventory</h4>
