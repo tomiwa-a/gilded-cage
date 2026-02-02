@@ -12,7 +12,6 @@ import UserIcon from '../components/icons/UserIcon';
 import SwordIcon from '../components/icons/SwordIcon';
 import UsersIcon from '../components/icons/UsersIcon';
 import ShopIcon from '../components/icons/ShopIcon';
-import CogIcon from '../components/icons/CogIcon';
 import { mockPlayer, mockLocation, mockEventLog } from '../data/mocks';
 
 export default function GameShell() {
@@ -29,7 +28,6 @@ export default function GameShell() {
     { path: '/game/combat', icon: SwordIcon, label: 'Combat' },
     { path: '/game/social', icon: UsersIcon, label: 'Social' },
     { path: '/game/market', icon: ShopIcon, label: 'Market' },
-    { path: '/game/settings', icon: CogIcon, label: 'Settings' },
   ];
 
   return (

@@ -12,7 +12,6 @@ import ProfilePage from './pages/game/ProfilePage';
 import CombatPage from './pages/game/CombatPage';
 import SocialPage from './pages/game/SocialPage';
 import MarketPage from './pages/game/MarketPage';
-import SettingsPage from './pages/game/SettingsPage';
 
 function App() {
   return (
@@ -31,7 +30,6 @@ function App() {
           <Route path="combat" element={<CombatPage />} />
           <Route path="social" element={<SocialPage />} />
           <Route path="market" element={<MarketPage />} />
-          <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

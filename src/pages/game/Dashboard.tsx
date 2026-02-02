@@ -1,4 +1,4 @@
-import { mockLocation, mockActions } from '../../data/mocks';
+import { mockLocation } from '../../data/mocks';
 import BriefcaseIcon from '../../components/icons/BriefcaseIcon';
 import SkullIcon from '../../components/icons/SkullIcon';
 import MapIcon from '../../components/icons/MapIcon';
