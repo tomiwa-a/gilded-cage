@@ -1,58 +1,73 @@
-# The Gilded Cage
+# React + TypeScript + Vite
 
-> **A browser-based, text-forward MMO where your choices reshape a living, breathing world**
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Currently, two official plugins are available:
 
-## About
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-The Gilded Cage combines the narrative depth of a CRPG with the emergent economy of a management sim, all powered by AI. It's a massively multiplayer experience where:
+## React Compiler
 
-- **Every action matters** — Your decisions ripple through a real-time global economy
-- **The world reacts** — An AI Game Master narrates your story and drives dynamic world events
-- **No page reloads** — Real-time updates keep you immersed in the action
-- **Player-driven chaos** — Hoard resources, burn buildings, or build empires — the choice is yours
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Tech Stack
+## Expanding the ESLint configuration
 
-- **Frontend**: React (Vite) + TailwindCSS
-- **Backend**: Convex (real-time database + serverless functions)
-- **Language**: TypeScript
-- **AI**: Google Gemini 1.5 (Flash for player actions, Pro for world events)
-- **Auth**: Convex Auth / Clerk
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Setup
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/gilded-cage.git
-cd gilded-cage
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env
-# Add your Convex and Gemini API keys
-
-# Run the development server
-npm run dev
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## Contributing
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-The Gilded Cage is **open source** (MIT License) and we welcome contributions! Feel free to:
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-- Fork the repository
-- Create a feature branch
-- Submit a Pull Request
-
-## Author
-
-**Tomiwa Amole**
-
-Reach out to me on Twitter: [@tomiwa_amole](https://twitter.com/tomiwa_amole)
-
----
-
-_"In The Gilded Cage, freedom is an illusion — but the game is very, very real."_
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
