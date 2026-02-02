@@ -215,49 +215,51 @@ export default function CharacterCreation() {
                 <p className="text-neutral-600">How ruthless will The Cage be?</p>
               </div>
               
-              <div className="grid grid-cols-1 gap-4 mb-8 max-w-2xl mx-auto">
-                {difficulties.map((diff) => (
-                  <button
-                    key={diff.id}
-                    onClick={() => setCharacter({ ...character, difficulty: diff.id })}
-                    className={`card-game p-6 sm:p-8 w-full text-left ${
-                      character.difficulty === diff.id ? 'selected animate-pulse-glow' : ''
-                    }`}
-                  >
-                    <h3 className="text-xl font-bold text-neutral-900 mb-1">{diff.name}</h3>
-                    <p className="text-sm text-neutral-600 mb-4">{diff.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {diff.modifiers.map((mod) => (
-                        <span key={mod} className="text-xs bg-neutral-100 px-3 py-1.5 rounded-full">{mod}</span>
-                      ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="lg:col-span-2 space-y-4">
+                  {difficulties.map((diff) => (
+                    <button
+                      key={diff.id}
+                      onClick={() => setCharacter({ ...character, difficulty: diff.id })}
+                      className={`card-game p-6 sm:p-8 w-full text-left ${
+                        character.difficulty === diff.id ? 'selected animate-pulse-glow' : ''
+                      }`}
+                    >
+                      <h3 className="text-xl font-bold text-neutral-900 mb-1">{diff.name}</h3>
+                      <p className="text-sm text-neutral-600 mb-4">{diff.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {diff.modifiers.map((mod) => (
+                          <span key={mod} className="text-xs bg-neutral-100 px-3 py-1.5 rounded-full">{mod}</span>
+                        ))}
+                      </div>
+                    </button>
+                  ))}
+                </div>
 
-              <div className="card-game p-6 sm:p-8 max-w-lg mx-auto">
-                <h4 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">Character Summary</h4>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-neutral-600">Name</span>
-                    <span className="font-medium text-neutral-900">{character.name}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-neutral-600">Archetype</span>
-                    <span className="font-medium text-neutral-900 capitalize">{character.archetype}</span>
-                  </div>
-                  <div className="border-t border-neutral-100 pt-3 mt-3 space-y-2">
+                <div className="card-game p-6 sm:p-8 h-fit">
+                  <h4 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">Character Summary</h4>
+                  <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-neutral-600">Influence</span>
-                      <span className="font-medium text-neutral-900">{getFinalStats().influence}</span>
+                      <span className="text-neutral-600">Name</span>
+                      <span className="font-medium text-neutral-900">{character.name}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-neutral-600">Cunning</span>
-                      <span className="font-medium text-neutral-900">{getFinalStats().cunning}</span>
+                      <span className="text-neutral-600">Archetype</span>
+                      <span className="font-medium text-neutral-900 capitalize">{character.archetype}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-neutral-600">Power</span>
-                      <span className="font-medium text-neutral-900">{getFinalStats().power}</span>
+                    <div className="border-t border-neutral-100 pt-3 mt-3 space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-neutral-600">Influence</span>
+                        <span className="font-medium text-neutral-900">{getFinalStats().influence}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-neutral-600">Cunning</span>
+                        <span className="font-medium text-neutral-900">{getFinalStats().cunning}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-neutral-600">Power</span>
+                        <span className="font-medium text-neutral-900">{getFinalStats().power}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
