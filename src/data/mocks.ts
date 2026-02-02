@@ -55,3 +55,42 @@ export const mockMarketPrices = [
   { resource: "Code", price: 120, change: -5 },
   { resource: "Food", price: 30, change: +1 },
 ];
+
+export const archetypes = [
+  {
+    id: 'visionary',
+    name: 'Visionary',
+    description: 'Masters of persuasion and foresight. You see opportunities where others see obstacles.',
+    bonus: { rhetoric: 3, hustle: 1, entropy: 1 },
+    playstyle: 'Diplomacy & Manipulation',
+  },
+  {
+    id: 'grifter',
+    name: 'Grifter',
+    description: 'Born survivors who thrive in chaos. Quick hands, quicker thinking.',
+    bonus: { rhetoric: 1, hustle: 3, entropy: 1 },
+    playstyle: 'Stealth & Commerce',
+  },
+  {
+    id: 'brute',
+    name: 'Brute',
+    description: 'When words fail, force prevails. You are the storm others fear.',
+    bonus: { rhetoric: 1, hustle: 1, entropy: 3 },
+    playstyle: 'Combat & Intimidation',
+  },
+];
+
+export const difficulties = [
+  {
+    id: 'normal',
+    name: 'Normal',
+    description: 'A balanced experience. Death sets you back, but you can recover.',
+    modifiers: ['Standard AP regeneration', 'Normal economy', 'Respawn with 50% resources'],
+  },
+  {
+    id: 'hardcore',
+    name: 'Hardcore',
+    description: 'Permadeath. One life, one chance. For those who seek true challenge.',
+    modifiers: ['Slower AP regeneration', 'Scarce resources', 'Permanent death'],
+  },
+];
