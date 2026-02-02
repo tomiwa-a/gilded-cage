@@ -1,4 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import LogoIcon from '../components/icons/LogoIcon';
+import WorldIcon from '../components/icons/WorldIcon';
+import BrainIcon from '../components/icons/BrainIcon';
+import CoinsIcon from '../components/icons/CoinsIcon';
+import BoltIcon from '../components/icons/BoltIcon';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -8,7 +13,9 @@ export default function LandingPage() {
       <nav className="border-b border-neutral-200">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">🏛️</span>
+            <div className="w-8 h-8 text-neutral-900">
+              <LogoIcon />
+            </div>
             <span className="text-xl font-semibold text-neutral-900">The Gilded Cage</span>
           </div>
           <div className="flex items-center gap-6">
@@ -46,9 +53,9 @@ export default function LandingPage() {
         <section className="py-20 grid md:grid-cols-2 gap-12 max-w-4xl">
           <div className="flex gap-4">
             <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <div className="w-6 h-6 text-white">
+                <WorldIcon />
+              </div>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-neutral-900 mb-2">Real-Time World</h3>
@@ -60,9 +67,9 @@ export default function LandingPage() {
 
           <div className="flex gap-4">
             <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
+              <div className="w-6 h-6 text-white">
+                <BrainIcon />
+              </div>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-neutral-900 mb-2">AI-Powered Narrative</h3>
@@ -74,9 +81,9 @@ export default function LandingPage() {
 
           <div className="flex gap-4">
             <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <div className="w-6 h-6 text-white">
+                <CoinsIcon />
+              </div>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-neutral-900 mb-2">Player-Driven Economy</h3>
@@ -88,9 +95,9 @@ export default function LandingPage() {
 
           <div className="flex gap-4">
             <div className="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+              <div className="w-6 h-6 text-white">
+                <BoltIcon />
+              </div>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-neutral-900 mb-2">Action Points System</h3>
@@ -122,7 +129,9 @@ export default function LandingPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">🏛️</span>
+                <div className="w-6 h-6 text-neutral-900">
+                  <LogoIcon />
+                </div>
                 <span className="font-semibold text-neutral-900">The Gilded Cage</span>
               </div>
               <p className="text-sm text-neutral-600">© 2026 The Gilded Cage. Open Source.</p>
