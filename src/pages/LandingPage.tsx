@@ -23,7 +23,7 @@ export default function LandingPage() {
               GitHub
             </a>
             <button
-              onClick={() => navigate('/game')}
+              onClick={() => navigate('/create')}
               className="px-6 py-2 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-800 transition-colors"
             >
               Play Now
@@ -43,7 +43,7 @@ export default function LandingPage() {
             Everything works in real-time by default.
           </p>
           <button
-            onClick={() => navigate('/game')}
+            onClick={() => navigate('/create')}
             className="px-6 py-3 border border-neutral-900 text-neutral-900 font-medium rounded-lg hover:bg-neutral-50 transition-colors"
           >
             Enter the Game
@@ -115,7 +115,7 @@ export default function LandingPage() {
               Create your character and start shaping the world.
             </p>
             <button
-              onClick={() => navigate('/game')}
+              onClick={() => navigate('/create')}
               className="px-8 py-3 bg-neutral-900 text-white font-medium rounded-lg hover:bg-neutral-800 transition-colors"
             >
               Play Now
