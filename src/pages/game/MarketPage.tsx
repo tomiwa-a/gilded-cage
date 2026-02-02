@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import CoinsIcon from '../../components/icons/CoinsIcon';
 
 const shopItems = [
   { id: 1, name: 'Energy Drink', description: 'Restores 25 energy', price: 15, stock: 5 },
@@ -16,7 +17,13 @@ export default function MarketPage() {
     <div className="max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-neutral-900">Market</h1>
-        <span className="text-sm text-neutral-600">Your Cash: <span className="font-bold text-green-600">$1,250</span></span>
+        <div className="flex items-center gap-2 text-sm">
+          <span className="text-neutral-600">Your Cash:</span>
+          <div className="flex items-center gap-1 font-bold text-green-600">
+            <span className="w-4 h-4"><CoinsIcon /></span>
+            <span>$1,250</span>
+          </div>
+        </div>
       </div>
 
       <div className="flex gap-2 mb-6">

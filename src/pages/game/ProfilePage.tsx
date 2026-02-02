@@ -40,7 +40,10 @@ export default function ProfilePage() {
           <div className="space-y-4">
             <div>
               <div className="flex items-center justify-between text-sm mb-1">
-                <span className="text-neutral-600">Health</span>
+                <div className="flex items-center gap-2 text-neutral-600">
+                  <span className="w-4 h-4"><HeartIcon /></span>
+                  <span>Health</span>
+                </div>
                 <span className="font-medium">{mockPlayer.health}/{mockPlayer.maxHealth}</span>
               </div>
               <div className="w-full bg-neutral-200 rounded-full h-2">
@@ -49,7 +52,10 @@ export default function ProfilePage() {
             </div>
             <div>
               <div className="flex items-center justify-between text-sm mb-1">
-                <span className="text-neutral-600">Energy</span>
+                <div className="flex items-center gap-2 text-neutral-600">
+                  <span className="w-4 h-4"><BoltIcon /></span>
+                  <span>Energy</span>
+                </div>
                 <span className="font-medium">{mockPlayer.ap}/{mockPlayer.maxAp}</span>
               </div>
               <div className="w-full bg-neutral-200 rounded-full h-2">
@@ -57,7 +63,10 @@ export default function ProfilePage() {
               </div>
             </div>
             <div className="flex items-center justify-between text-sm pt-2">
-              <span className="text-neutral-600">Money</span>
+              <div className="flex items-center gap-2 text-neutral-600">
+                <span className="w-4 h-4"><CoinsIcon /></span>
+                <span>Money</span>
+              </div>
               <span className="font-bold text-green-600">${mockPlayer.money}</span>
             </div>
           </div>

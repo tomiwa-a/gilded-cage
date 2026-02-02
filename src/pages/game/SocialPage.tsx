@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import UserIcon from '../../components/icons/UserIcon';
 import CrownIcon from '../../components/icons/CrownIcon';
-import StarIcon from '../../components/icons/StarIcon';
 import ChatIcon from '../../components/icons/ChatIcon';
 
 export default function SocialPage() {
@@ -73,33 +72,35 @@ export default function SocialPage() {
 
       {activeTab === 'crew' && (
         <div className="space-y-4">
-                  <span className="text-sm text-neutral-500">Lv {member.level}</span>
+          {crew.map((member) => (
+            <div key={member.id} className="flex items-center justify-between bg-white p-4 rounded-lg border border-neutral-200">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-neutral-200 rounded-full flex items-center justify-center text-neutral-500">
+                  <div className="w-6 h-6">
+                    {member.role === 'Leader' ? <CrownIcon /> : <UserIcon />}
+                  </div>
                 </div>
-              ))}
+                <div>
+                  <div className="font-medium text-neutral-900 flex items-center gap-2">
+                    {member.name}
+                    {member.role === 'Leader' && <span className="w-4 h-4 text-yellow-500"><CrownIcon /></span>}
+                  </div>
+                  <div className="text-xs text-neutral-500">{member.role}</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full ${member.status === 'online' ? 'bg-green-500' : 'bg-neutral-300'}`}></span>
+                <span className="text-sm text-neutral-500 capitalize">{member.status}</span>
+              </div>
             </div>
-          </div>
-
-          <div className="bg-white border border-neutral-200 rounded-lg p-6">
-            <h3 className="font-semibold text-neutral-900 mb-4">Crew Chat</h3>
-            <div className="space-y-2 mb-4 text-sm">
-              <div><span className="font-medium">BossMan:</span> Anyone up for a territory raid tonight?</div>
-              <div><span className="font-medium">VeteranX:</span> I'm in. 9pm?</div>
-              <div><span className="font-medium text-blue-600">You:</span> Count me in</div>
-            </div>
-            <div className="flex gap-2">
-              <input type="text" placeholder="Type message..." className="flex-1 px-3 py-2 border border-neutral-200 rounded-lg" />
-              <button className="px-4 py-2 bg-neutral-900 text-white rounded-lg">Send</button>
-            </div>
-          </div>
+          ))}
         </div>
       )}
 
       {activeTab === 'messages' && (
-        <div className="bg-white border border-neutral-200 rounded-lg p-6">
-          <h2 className="text-lg font-semibold text-neutral-900 mb-4">Messages</h2>
-          <div className="text-center text-neutral-500 py-8">
-            No messages yet
-          </div>
+        <div className="text-center py-12 text-neutral-500">
+          <div className="w-12 h-12 mx-auto mb-4 text-neutral-300"><ChatIcon /></div>
+          No new messages
         </div>
       )}
     </div>
