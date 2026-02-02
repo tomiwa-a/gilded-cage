@@ -61,7 +61,7 @@ export default function ProfilePage() {
           <div className="bg-white border border-neutral-200 rounded-xl shadow-sm p-6 text-center">
             <div className="relative inline-block">
               <div className="w-24 h-24 bg-neutral-100 rounded-full mx-auto mb-4 flex items-center justify-center text-neutral-400 border-4 border-white shadow-sm">
-                <div className="w-12 h-12"><UserIcon /></div>
+                <div className="w-12 h-12 [&>svg]:w-full [&>svg]:h-full"><UserIcon /></div>
               </div>
               <div className="absolute bottom-4 right-0 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
             </div>
@@ -88,7 +88,7 @@ export default function ProfilePage() {
                        : 'bg-neutral-50 text-neutral-600 hover:bg-neutral-100'
                    }`}
                  >
-                   <div className="w-5 h-5"><ShieldIcon /></div>
+                   <div className="w-5 h-5 [&>svg]:w-full [&>svg]:h-full"><ShieldIcon /></div>
                    <span className="text-xs font-semibold">Overview</span>
                  </button>
                  <button
@@ -99,7 +99,7 @@ export default function ProfilePage() {
                        : 'bg-neutral-50 text-neutral-600 hover:bg-neutral-100'
                    }`}
                  >
-                   <div className="w-5 h-5"><CogIcon /></div>
+                   <div className="w-5 h-5 [&>svg]:w-full [&>svg]:h-full"><CogIcon /></div>
                    <span className="text-xs font-semibold">Settings</span>
                  </button>
               </div>
@@ -110,7 +110,7 @@ export default function ProfilePage() {
           <div className="bg-white border border-neutral-200 rounded-xl shadow-sm p-4">
              <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-semibold text-neutral-400 uppercase">Cash Available</span>
-                <div className="w-4 h-4 text-neutral-400"><CoinsIcon /></div>
+                <div className="w-4 h-4 text-neutral-400 [&>svg]:w-full [&>svg]:h-full"><CoinsIcon /></div>
              </div>
              <div className="text-2xl font-bold text-neutral-900">${mockPlayer.money.toLocaleString()}</div>
              <div className="text-xs text-green-600 font-medium mt-1">+12% this week</div>
@@ -129,7 +129,7 @@ export default function ProfilePage() {
                     <div className="relative">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
-                          <div className="w-6 h-6"><HeartIcon /></div>
+                          <div className="w-6 h-6 [&>svg]:w-full [&>svg]:h-full"><HeartIcon /></div>
                         </div>
                         <div>
                           <div className="text-sm font-semibold text-neutral-500">Health Status</div>
@@ -147,7 +147,7 @@ export default function ProfilePage() {
                     <div className="relative">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center">
-                          <div className="w-6 h-6"><BoltIcon /></div>
+                          <div className="w-6 h-6 [&>svg]:w-full [&>svg]:h-full"><BoltIcon /></div>
                         </div>
                         <div>
                           <div className="text-sm font-semibold text-neutral-500">Energy Level</div>
@@ -172,7 +172,7 @@ export default function ProfilePage() {
                     <div className="flex items-center justify-between p-3 bg-neutral-50 rounded-lg">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 flex items-center justify-center bg-purple-100 text-purple-600 rounded-full">
-                           <div className="w-4 h-4"><ChatIcon /></div> 
+                           <div className="w-5 h-5 [&>svg]:w-full [&>svg]:h-full"><ChatIcon /></div> 
                         </div>
                         <span className="font-medium text-neutral-700">Influence</span>
                       </div>
@@ -181,7 +181,7 @@ export default function ProfilePage() {
                     <div className="flex items-center justify-between p-3 bg-neutral-50 rounded-lg">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full">
-                           <div className="w-4 h-4"><BrainIcon /></div>
+                           <div className="w-5 h-5 [&>svg]:w-full [&>svg]:h-full"><BrainIcon /></div>
                         </div>
                         <span className="font-medium text-neutral-700">Cunning</span>
                       </div>
@@ -190,7 +190,7 @@ export default function ProfilePage() {
                     <div className="flex items-center justify-between p-3 bg-neutral-50 rounded-lg">
                        <div className="flex items-center gap-3">
                         <div className="w-8 h-8 flex items-center justify-center bg-red-100 text-red-600 rounded-full">
-                           <div className="w-4 h-4"><SwordIcon /></div>
+                           <div className="w-5 h-5 [&>svg]:w-full [&>svg]:h-full"><SwordIcon /></div>
                         </div>
                         <span className="font-medium text-neutral-700">Power</span>
                       </div>
@@ -274,7 +274,9 @@ export default function ProfilePage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-4 bg-neutral-50 rounded-xl border border-neutral-100">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-neutral-500 shadow-sm border border-neutral-200">@</div>
+                      <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-neutral-500 shadow-sm border border-neutral-200">
+                        <div className="w-5 h-5 [&>svg]:w-full [&>svg]:h-full"><UserIcon /></div>
+                      </div>
                       <div>
                         <div className="font-medium text-neutral-900">Email Address</div>
                         <div className="text-xs text-neutral-500">alex@gmail.com</div>
@@ -356,7 +358,7 @@ export default function ProfilePage() {
                   onClick={handleLogout}
                   className="flex items-center gap-2 px-6 py-3 bg-white text-neutral-700 font-medium border border-neutral-200 rounded-xl hover:bg-neutral-50 hover:border-neutral-300 transition-all shadow-sm"
                 >
-                  <div className="w-4 h-4 rotate-180"><ShieldIcon /></div>
+                  <div className="w-4 h-4 rotate-180 [&>svg]:w-full [&>svg]:h-full"><ShieldIcon /></div>
                   Logout Session
                 </button>
               </div>

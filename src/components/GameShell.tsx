@@ -24,10 +24,10 @@ export default function GameShell() {
     { path: '/game/work', icon: BriefcaseIcon, label: 'Work' },
     { path: '/game/crime', icon: SkullIcon, label: 'Crime' },
     { path: '/game/inventory', icon: BackpackIcon, label: 'Inventory' },
-    { path: '/game/profile', icon: UserIcon, label: 'Profile' },
     { path: '/game/combat', icon: SwordIcon, label: 'Combat' },
     { path: '/game/social', icon: UsersIcon, label: 'Social' },
     { path: '/game/market', icon: ShopIcon, label: 'Market' },
+    { path: '/game/profile', icon: UserIcon, label: 'Profile' },
   ];
 
   return (
